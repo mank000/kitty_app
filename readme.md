@@ -20,23 +20,17 @@
 
 ### Шаг 1: Клонирование репозитория
 ```
-git clone https://github.com/yourusername/cat-management-api.git
-cd cat-management-api
+git clone https://github.com/yourusername/kitty_app.git
+cd kitty_app
 ```
 ### Шаг 2: Как развернуть проект в Docker?
 
-
-1. Перейдите в директорию проекта:
-    ```bash
-    cd menuapp
-    ```
-
-2. Запустите проект с помощью Docker Compose:
+1. Запустите проект из директории с помощью Docker Compose:
     ```bash
     sudo docker-compose up -d --build
     ```
 
-3. Создайте суперпользователя для доступа к админке:
+2. Создайте суперпользователя для доступа к админке:
     ```bash
    python manage.py createsuperuser
     ```
