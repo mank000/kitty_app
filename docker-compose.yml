@@ -1,0 +1,41 @@
+version: '3.3'
+
+volumes:
+  pg_data:
+  static:
+
+services:
+  db:
+    image: postgres:13
+    env_file:
+      - .env.example
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  backend:
+    
+    build: ./kittyapi/
+    env_file: .env.example
+    volumes:
+      - static:/backend_static
+    depends_on: 
+      - db
+    command: > 
+      sh -c "python manage.py wait_for_db &&
+        python manage.py migrate &&
+        python manage.py upload_data
+        python manage.py collectstatic
+        gunicorn --bind 0.0.0.0:8000 kittyapi.wsgi
+        python manage.py runserver 0.0.0.0:8000"
+  
+  nginx:
+    depends_on:
+      - backend
+    build: ./nginx/
+    env_file: .env.example
+    volumes:
+      - static:/backend_static
+    ports:
+      - 8000:80
