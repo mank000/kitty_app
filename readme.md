@@ -52,6 +52,7 @@ API Endpoints
 - /api/v1/breeds/ — управление, просмотр пород
 - /api/v1/cats/{id}/rate/ — выставление рейтинга коту
 - /swagger - Документация
+
 Пример запроса для оценки кота:
 ```
 POST /api/cats/{id}/rate/
