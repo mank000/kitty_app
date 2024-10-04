@@ -21,7 +21,6 @@
 ### Шаг 1: Клонирование репозитория
 ```
 git clone https://github.com/yourusername/cat-management-api.git
-cd cat-management-api
 ```
 ### Шаг 2: Как развернуть проект в Docker?
 
@@ -54,11 +53,11 @@ pytest
 
 API Endpoints
 ## Основные эндпоинты:
-/api/v1/cats/ — управление, просмотр котиков
-/api/v1/breeds/ — управление, просмотр пород
-/api/v1/cats/{id}/rate/ — выставление рейтинга коту
-/swagger
-/api/v1/auth/user/
+- /api/v1/cats/ — управление, просмотр котиков
+- /api/v1/breeds/ — управление, просмотр пород
+- /api/v1/cats/{id}/rate/ — выставление рейтинга коту
+- /swagger - документация
+- /api/v1/auth/user/ - работа с пользователем
 
 Запрос для регистрации
 ```
