@@ -20,17 +20,23 @@
 
 ### Шаг 1: Клонирование репозитория
 ```
-git clone https://github.com/yourusername/kitty_app.git
-cd kitty_app
+git clone https://github.com/yourusername/cat-management-api.git
+cd cat-management-api
 ```
 ### Шаг 2: Как развернуть проект в Docker?
 
-1. Запустите проект из директории с помощью Docker Compose:
+
+1. Перейдите в директорию проекта:
+    ```bash
+    cd menuapp
+    ```
+
+2. Запустите проект с помощью Docker Compose:
     ```bash
     sudo docker-compose up -d --build
     ```
 
-2. Создайте суперпользователя для доступа к админке:
+3. Создайте суперпользователя для доступа к админке:
     ```bash
    python manage.py createsuperuser
     ```
@@ -48,12 +54,42 @@ pytest
 
 API Endpoints
 ## Основные эндпоинты:
-- /api/v1/cats/{id}/ — управление, просмотр котиков
-- /api/v1/breeds/ — управление, просмотр пород
-- /api/v1/cats/{id}/rate/ — выставление рейтинга коту
-- /swagger - Документация
+/api/v1/cats/ — управление, просмотр котиков
+/api/v1/breeds/ — управление, просмотр пород
+/api/v1/cats/{id}/rate/ — выставление рейтинга коту
+/swagger
+/api/v1/auth/user/
 
-Пример запроса для оценки кота:
+Запрос для регистрации
+```
+POST /api/v1/auth/user/
+{
+    'username': 'name',
+    'password': 'strongpassword'
+}
+```
+
+Запрос для получения токена 
+```
+POST /api/v1/auth/token/
+{
+    'username': 'name',
+    'password': 'strongpassword'
+}
+```
+
+Запрос для создания котика 
+```
+POST /api/v1/cats/
+{
+    'name': 'Афанасий',
+    'age': 1,
+    'breed': 'Сфинкс',
+    'color': 'Черный',
+}
+```
+
+Запрос для оценки кота:
 ```
 POST /api/cats/{id}/rate/
 {
